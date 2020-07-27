@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="city">Челябинск</string>
+    <integer name="temperatureValue">30</integer>
+    <string name="temperature">°С</string>
+    <string name="windSpeed">Ветер</string>
+    <integer name="windValue">5</integer>
+    <string name="windUnits">м/с</string>
+    <string name="wtg">ВЭУ</string>
+</resources>

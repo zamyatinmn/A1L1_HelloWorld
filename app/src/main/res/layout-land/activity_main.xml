@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_wtg_land"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.181" />
+
+    <TextView
+        android:id="@+id/temperatureUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:text="@string/temperature"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/city" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="72dp"
+        android:text="@string/windSpeed"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/windUnits"
+        app:layout_constraintTop_toTopOf="@+id/windUnits" />
+
+    <TextView
+        android:id="@+id/windUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/windUnits"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@+id/temperatureUnits"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureUnits" />
+
+    <Switch
+        android:id="@+id/wtgSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/wtg"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/windUnits"
+        app:layout_constraintTop_toBottomOf="@+id/windUnits" />
+
+    <TextView
+        android:id="@+id/temperatureValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@integer/temperatureValue"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/temperatureUnits"
+        app:layout_constraintEnd_toStartOf="@+id/temperatureUnits" />
+
+    <TextView
+        android:id="@+id/windValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:text="@integer/windValue"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toStartOf="@+id/windUnits"
+        app:layout_constraintTop_toTopOf="@+id/windUnits" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
