@@ -2,9 +2,11 @@ package com.example.a1l1_helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private int  windValue;
     private TextView textView;
     private final double COEFFICIENT = 1.5;
+    private Button settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(String.valueOf(windValue));
             }
         });
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initViews() {
@@ -38,5 +48,6 @@ public class MainActivity extends AppCompatActivity {
         wtgSwitch = findViewById(R.id.wtgSwitch);
         windValue = resources.getInteger(R.integer.windValue);
         textView = findViewById(R.id.windValue);
+        settingsBtn = findViewById(R.id.settingsBtn);
     }
 }
