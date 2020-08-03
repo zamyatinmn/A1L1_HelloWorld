@@ -7,4 +7,19 @@
     <integer name="windValue">5</integer>
     <string name="windUnits">m/s</string>
     <string name="wtg">WTG</string>
+    <string name="checkBox_wind">Show wind speed</string>
+    <string name="checkBox_pressure">Show air pressure</string>
+    <string name="settingsText">Settings</string>
+    <string name="dark_theme">Dark theme</string>
+    <string-array name="Cities">
+        <item>Moscow</item>
+        <item>Saint-Petersburg</item>
+        <item>Ekaterinburg</item>
+        <item>Chelyabinsk</item>
+        <item>Krasnodar</item>
+        <item>Sochi</item>
+        <item>Maykop</item>
+        <item>Volgograd</item>
+        <item>Rostov-on-don</item>
+    </string-array>
 </resources>

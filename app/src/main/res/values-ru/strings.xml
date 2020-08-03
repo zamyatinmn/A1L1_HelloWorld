@@ -8,4 +8,19 @@
     <integer name="windValue">5</integer>
     <string name="windUnits">м/с</string>
     <string name="wtg">ВЭУ</string>
+    <string name="checkBox_wind">Отображать скорость ветра</string>
+    <string name="checkBox_pressure">Отображать давление</string>
+    <string name="settingsText">Настройки</string>
+    <string name="dark_theme">Темная тема</string>
+    <string-array name="Cities">
+        <item>Москва</item>
+        <item>Санкт-петербург</item>
+        <item>Екатеринбург</item>
+        <item>Челябинск</item>
+        <item>Краснодар</item>
+        <item>Сочи</item>
+        <item>Майкоп</item>
+        <item>Волгоград</item>
+        <item>Ростов-на-Дону</item>
+    </string-array>
 </resources>
