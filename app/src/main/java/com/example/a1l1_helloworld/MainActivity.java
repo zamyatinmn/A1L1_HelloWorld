@@ -14,6 +14,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private Switch wtgSwitch;
@@ -23,9 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView city;
     private TextView windWord;
     private TextView windUnits;
+    private TextView precipitation;
+    private TextView precipitationValue;
+    private TextView precipitationUnits;
     private final String windValueDataKey = "windValueDataKey";
+    private final String windVisKey = "windValueDataKey";
+    private final String precVisKey = "windValueDataKey";
     final static String cityPositionKey = "cityPositionKey";
-    final static  String windKey = "windKey";
+    final static String windKey = "windKey";
+    final static String precipitationKey = "precipitationKey";
     private final static int requestCode = 13213;
     private final double COEFFICIENT = 1.5;
     String[] cities;
@@ -38,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         setOnClickBehavior();
         setOnSwitchBehavior();
+
+        if (savedInstanceState != null) {
+            setWindDataVisibility(Objects.requireNonNull(savedInstanceState.getBundle("key")).getInt(windVisKey));
+            setPrecipitationDataVisibility(savedInstanceState.getInt(precVisKey));
+        }
     }
 
     /**
@@ -61,16 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle SaveInstanceState) {
-        String value = textView.getText().toString();
-        SaveInstanceState.putString(windValueDataKey, value);
+        Bundle bundle = new Bundle();
+        bundle.putInt(windVisKey, windWord.getVisibility());
+        SaveInstanceState.putBundle("key", bundle);
+        SaveInstanceState.putInt(precVisKey, precipitation.getVisibility());
         super.onSaveInstanceState(SaveInstanceState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        String value = savedInstanceState.getString(windValueDataKey);
-        textView.setText(value);
     }
 
     /**
@@ -113,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             intent.putExtra(windKey, false);
         }
+        if (precipitation.getVisibility() == View.VISIBLE){
+            intent.putExtra(precipitationKey, true);
+        } else {
+            intent.putExtra(precipitationKey, false);
+        }
     }
 
     /**
@@ -129,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
         windWord = findViewById(R.id.windWord);
         windUnits = findViewById(R.id.windUnits);
         cities = resources.getStringArray(R.array.Cities);
+        precipitation = findViewById(R.id.precipitation);
+        precipitationValue = findViewById(R.id.precipitationValue);
+        precipitationUnits = findViewById(R.id.precipitationUnits);
     }
 
     @Override
@@ -138,18 +154,30 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == MainActivity.requestCode && resultCode == RESULT_OK && data != null) {
             String strData = data.getStringExtra(SettingsActivity.cityKey);
             if (!data.getBooleanExtra(SettingsActivity.windKey, false)) {
-                textView.setVisibility(View.GONE);
-                wtgSwitch.setVisibility(View.GONE);
-                windUnits.setVisibility(View.GONE);
-                windWord.setVisibility(View.GONE);
+                setWindDataVisibility(View.INVISIBLE);
             } else {
-                textView.setVisibility(View.VISIBLE);
-                wtgSwitch.setVisibility(View.VISIBLE);
-                windUnits.setVisibility(View.VISIBLE);
-                windWord.setVisibility(View.VISIBLE);
+                setWindDataVisibility(View.VISIBLE);
+            }
+            if (!data.getBooleanExtra(SettingsActivity.precipitationKey, false)){
+                setPrecipitationDataVisibility(View.INVISIBLE);
+            } else{
+                setPrecipitationDataVisibility(View.VISIBLE);
             }
             city.setText(strData);
         }
+    }
+
+    private void setPrecipitationDataVisibility(int visibility) {
+        precipitation.setVisibility(visibility);
+        precipitationValue.setVisibility(visibility);
+        precipitationUnits.setVisibility(visibility);
+    }
+
+    private void setWindDataVisibility(int visibility) {
+        textView.setVisibility(visibility);
+        wtgSwitch.setVisibility(visibility);
+        windUnits.setVisibility(visibility);
+        windWord.setVisibility(visibility);
     }
 
 

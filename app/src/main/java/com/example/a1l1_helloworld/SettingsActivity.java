@@ -16,8 +16,10 @@ import java.util.Objects;
 public class SettingsActivity extends AppCompatActivity {
     Spinner spinner;
     CheckBox checkBoxWind;
+    CheckBox checkBoxPrecipitation;
     final static String cityKey = "cityKey";
     final static String windKey = "windKey";
+    final static String precipitationKey = "precipitation";
 
 
     @Override
@@ -26,7 +28,8 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.settings_layout);
         initViews();
         spinner.setSelection(getIntent().getIntExtra(MainActivity.cityPositionKey, 3));
-        checkBoxWind.setChecked(getIntent().getBooleanExtra(MainActivity.windKey, false));
+        checkBoxWind.setChecked(getIntent().getBooleanExtra(MainActivity.windKey, true));
+        checkBoxPrecipitation.setChecked(getIntent().getBooleanExtra(MainActivity.precipitationKey, true));
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
     }
@@ -37,6 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void initViews() {
         spinner = findViewById(R.id.spinner);
         checkBoxWind = findViewById(R.id.checkBox_wind);
+        checkBoxPrecipitation = findViewById(R.id.checkBox_precipitation);
     }
 
     @Override
@@ -46,6 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
             Intent dataIntent = new Intent();
             dataIntent.putExtra(cityKey, text);
             dataIntent.putExtra(windKey, checkBoxWind.isChecked());
+            dataIntent.putExtra(precipitationKey, checkBoxPrecipitation.isChecked());
             setResult(RESULT_OK, dataIntent);
             finish();
         }
