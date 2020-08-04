@@ -11,6 +11,7 @@
     <string name="checkBox_pressure">Show air pressure</string>
     <string name="settingsText">Settings</string>
     <string name="dark_theme">Dark theme</string>
+    <string name="wikipedia" translatable="false">wikipedia</string>
     <string-array name="Cities">
         <item>Moscow</item>
         <item>Saint-Petersburg</item>
