@@ -26,13 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="28dp"
-        android:text="@string/temperature"
+        android:text="@string/temperatureUnits"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/windWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -90,6 +90,46 @@
         android:text="@string/settingsText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/city" />
+
+    <Button
+        android:id="@+id/wikiBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/blue"
+        android:text="@string/wikipedia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/settingsBtn" />
+
+    <TextView
+        android:id="@+id/precipitation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="@string/precipitation"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/windWord"
+        app:layout_constraintTop_toBottomOf="@+id/windWord" />
+
+    <TextView
+        android:id="@+id/precipitationValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/precipitationValue"
+        android:textSize="40sp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/precipitationUnits"
+        app:layout_constraintTop_toTopOf="@+id/precipitation" />
+
+    <TextView
+        android:id="@+id/precipitationUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/precipitationUnits"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@+id/wtgSwitch"
+        app:layout_constraintTop_toTopOf="@+id/precipitationValue" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

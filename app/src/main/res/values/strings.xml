@@ -2,15 +2,19 @@
     <string name="app_name">Weather</string>
     <string name="city">Chelyabinsk</string>
     <integer name="temperatureValue">30</integer>
-    <string name="temperature">°С</string>
+    <string name="temperatureUnits" translatable="false">°С</string>
     <string name="windSpeed">Wind</string>
     <integer name="windValue">5</integer>
-    <string name="windUnits">m/s</string>
+    <string name="windUnits" translatable="false">m/s</string>
     <string name="wtg">WTG</string>
     <string name="checkBox_wind">Show wind speed</string>
-    <string name="checkBox_pressure">Show air pressure</string>
+    <string name="checkBox_pressure">Show probability of precipitation</string>
     <string name="settingsText">Settings</string>
     <string name="dark_theme">Dark theme</string>
+    <string name="wikipedia" translatable="false">wikipedia</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="precipitationUnits" translatable="false">%</string>
+    <string name="precipitationValue" translatable="false">10</string>
     <string-array name="Cities">
         <item>Moscow</item>
         <item>Saint-Petersburg</item>
