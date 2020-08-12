@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,7 +43,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            setContentView(R.layout.two_fragments);
+        }else {
+            setContentView(R.layout.activity_main);
+        }
         initViews();
         setOnClickBehavior();
         setOnSwitchBehavior();
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             setWindDataVisibility(Objects.requireNonNull(savedInstanceState.getBundle("key")).getInt(windVisKey));
             setPrecipitationDataVisibility(savedInstanceState.getInt(precVisKey));
+            city.setText(savedInstanceState.getString("from list"));
         }
     }
 
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putInt(windVisKey, windWord.getVisibility());
         SaveInstanceState.putBundle("key", bundle);
         SaveInstanceState.putInt(precVisKey, precipitation.getVisibility());
+        SaveInstanceState.putString("from list", city.getText().toString());
         super.onSaveInstanceState(SaveInstanceState);
     }
 
@@ -112,9 +119,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setParametersForSettingsAct(Intent intent) {
         for (int i = 0; i < cities.length; i++) {
-            if (city.getText().equals(cities[i])) {
-                intent.putExtra(cityPositionKey, i);
-            }
+                if (city.getText().equals(cities[i])) {
+                    intent.putExtra(cityPositionKey, i);
+                }
         }
         if (windWord.getVisibility() == View.VISIBLE){
             intent.putExtra(windKey, true);
@@ -152,7 +159,10 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == MainActivity.requestCode && resultCode == RESULT_OK && data != null) {
-            String strData = data.getStringExtra(SettingsActivity.cityKey);
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+                String strData = data.getStringExtra(SettingsActivity.cityKey);
+                city.setText(strData);
+            }
             if (!data.getBooleanExtra(SettingsActivity.windKey, false)) {
                 setWindDataVisibility(View.INVISIBLE);
             } else {
@@ -163,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
             } else{
                 setPrecipitationDataVisibility(View.VISIBLE);
             }
-            city.setText(strData);
+
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.a1l1_helloworld;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -27,7 +28,9 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
         initViews();
-        spinner.setSelection(getIntent().getIntExtra(MainActivity.cityPositionKey, 3));
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            spinner.setSelection(getIntent().getIntExtra(MainActivity.cityPositionKey, 3));
+        }
         checkBoxWind.setChecked(getIntent().getBooleanExtra(MainActivity.windKey, true));
         checkBoxPrecipitation.setChecked(getIntent().getBooleanExtra(MainActivity.precipitationKey, true));
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
