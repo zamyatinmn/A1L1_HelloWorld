@@ -4,13 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,6 +23,7 @@ public class CitiesFragment extends Fragment implements IRVOnItemClick {
     private RecyclerView recyclerView;
     private RecyclerDataAdapter adapter;
     private ArrayList<String> listData;
+    private static String itemText = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +54,16 @@ public class CitiesFragment extends Fragment implements IRVOnItemClick {
 
     @Override
     public void onItemClicked(String itemText) {
-        EventBus.getBus().post(new SomeEvent(itemText));
+        CitiesFragment.itemText = itemText;
+        String answer = getString(R.string.are_you_sure) + " " + itemText + "?";
+        Snackbar.make(Objects.requireNonNull(getView()), answer,
+                BaseTransientBottomBar.LENGTH_LONG).
+                setAction(R.string.confirm, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getBus().post(new SomeEvent(CitiesFragment.itemText));
+            }
+        }).show();
+
     }
 }

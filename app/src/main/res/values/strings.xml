@@ -16,6 +16,8 @@
     <string name="precipitationUnits" translatable="false">%</string>
     <string name="precipitationValue" translatable="false">10</string>
     <string name="empty_list" translatable="false">empty list</string>
+    <string name="are_you_sure">Are you really want choose </string>
+    <string name="confirm">Confirm</string>
     <string-array name="Cities">
         <item>Moscow</item>
         <item>Saint-Petersburg</item>

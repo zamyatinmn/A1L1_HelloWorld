@@ -10,6 +10,8 @@
     <string name="settingsText">Настройки</string>
     <string name="dark_theme">Темная тема</string>
     <string name="precipitation">Осадки</string>
+    <string name="are_you_sure">Вы действительно хотите выбрать </string>
+    <string name="confirm">Подтвердить</string>
     <string-array name="Cities">
         <item>Москва</item>
         <item>Санкт-петербург</item>

@@ -12,12 +12,12 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements IRVOnItemClick {
 
-    private Switch wtgSwitch;
-    private Button settingsBtn;
-    private Button wikiBtn;
+    private SwitchMaterial wtgSwitch;
+    private MaterialButton settingsBtn;
+    private MaterialButton wikiBtn;
     private TextView textView;
     private TextView city;
     private TextView windWord;
