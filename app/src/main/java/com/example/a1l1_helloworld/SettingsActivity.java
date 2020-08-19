@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 
@@ -16,13 +15,13 @@ import java.util.Objects;
 
 
 public class SettingsActivity extends AppCompatActivity {
-    Spinner spinner;
-    CheckBox checkBoxWind;
-    CheckBox checkBoxPrecipitation;
-    CheckBox darkThemeCB;
+    private Spinner spinner;
+    private CheckBox checkBoxWind;
+    private CheckBox checkBoxHumidity;
+    private CheckBox darkThemeCB;
     final static String cityKey = "cityKey";
     final static String windKey = "windKey";
-    final static String precipitationKey = "precipitation";
+    final static String humidityKey = "humidity";
     private static boolean isChecked = false;
 
 
@@ -41,15 +40,12 @@ public class SettingsActivity extends AppCompatActivity {
         }
         darkThemeCB.setChecked(isChecked);
         checkBoxWind.setChecked(getIntent().getBooleanExtra(MainActivity.windKey, true));
-        checkBoxPrecipitation.setChecked(getIntent().getBooleanExtra(MainActivity.precipitationKey, true));
+        checkBoxHumidity.setChecked(getIntent().getBooleanExtra(MainActivity.humidityKey, true));
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        darkThemeCB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isChecked = darkThemeCB.isChecked();
-                recreate();
-            }
+        darkThemeCB.setOnClickListener(v -> {
+            isChecked = darkThemeCB.isChecked();
+            recreate();
         });
     }
 
@@ -59,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void initViews() {
         spinner = findViewById(R.id.spinner);
         checkBoxWind = findViewById(R.id.checkBox_wind);
-        checkBoxPrecipitation = findViewById(R.id.checkBox_precipitation);
+        checkBoxHumidity = findViewById(R.id.checkBox_humidity);
         darkThemeCB = findViewById(R.id.dark_theme);
     }
 
@@ -70,7 +66,7 @@ public class SettingsActivity extends AppCompatActivity {
             Intent dataIntent = new Intent();
             dataIntent.putExtra(cityKey, text);
             dataIntent.putExtra(windKey, checkBoxWind.isChecked());
-            dataIntent.putExtra(precipitationKey, checkBoxPrecipitation.isChecked());
+            dataIntent.putExtra(humidityKey, checkBoxHumidity.isChecked());
             setResult(RESULT_OK, dataIntent);
             finish();
         }

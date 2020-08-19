@@ -13,11 +13,10 @@
         android:text="@string/city"
         android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/settingsBtn"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.115" />
 
     <TextView
         android:id="@+id/temperatureUnits"
@@ -42,7 +41,7 @@
     <TextView
         android:id="@+id/windUnits"
         style="@style/wrap"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:text="@string/windUnits"
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="@+id/temperatureUnits"
@@ -55,7 +54,7 @@
         android:text="@string/wtg"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/windUnits"
-        app:layout_constraintTop_toBottomOf="@+id/windUnits"/>
+        app:layout_constraintTop_toBottomOf="@+id/windUnits" />
 
     <TextView
         android:id="@+id/temperatureValue"
@@ -77,11 +76,12 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/settingsBtn"
         style="@style/wrap"
+        android:layout_marginStart="32dp"
         android:layout_marginBottom="16dp"
         android:background="@color/blue"
         android:text="@string/settingsText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/city" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/wikiBtn"
@@ -91,41 +91,34 @@
         android:background="@color/blue"
         android:text="@string/wikipedia"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/settingsBtn"/>
+        app:layout_constraintStart_toEndOf="@+id/settingsBtn" />
 
     <TextView
-        android:id="@+id/precipitation"
+        android:id="@+id/humidity"
         style="@style/wrap"
-        android:layout_marginTop="36dp"
-        android:text="@string/precipitation"
+        android:layout_marginTop="72dp"
+        android:text="@string/humidity"
         android:textSize="@dimen/wind_size"
         app:layout_constraintEnd_toEndOf="@+id/windWord"
         app:layout_constraintTop_toBottomOf="@+id/windWord" />
 
     <TextView
-        android:id="@+id/precipitationValue"
+        android:id="@+id/humidityValue"
         style="@style/wrap"
-        android:text="@string/precipitationValue"
-        android:textSize="@dimen/text_size"
         android:layout_marginEnd="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/precipitationUnits"
-        app:layout_constraintTop_toTopOf="@+id/precipitation" />
+        android:text="@string/humidityValue"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toStartOf="@+id/humidityUnits"
+        app:layout_constraintTop_toTopOf="@+id/humidity" />
 
     <TextView
-        android:id="@+id/precipitationUnits"
+        android:id="@+id/humidityUnits"
         style="@style/wrap"
-        android:text="@string/precipitationUnits"
+        android:text="@string/humidityUnits"
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="@+id/wtgSwitch"
-        app:layout_constraintTop_toTopOf="@+id/precipitationValue" />
+        app:layout_constraintTop_toTopOf="@+id/humidityValue" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/days_view"
-        style="@style/wrap"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/city"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

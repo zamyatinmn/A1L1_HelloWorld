@@ -8,16 +8,18 @@
     <string name="windUnits" translatable="false">m/s</string>
     <string name="wtg">WTG</string>
     <string name="checkBox_wind">Show wind speed</string>
-    <string name="checkBox_pressure">Show probability of precipitation</string>
+    <string name="checkBox_humidity">Show humidity</string>
     <string name="settingsText">Settings</string>
     <string name="dark_theme">Dark theme</string>
     <string name="wikipedia" translatable="false">wikipedia</string>
-    <string name="precipitation">Precipitation</string>
-    <string name="precipitationUnits" translatable="false">%</string>
-    <string name="precipitationValue" translatable="false">10</string>
+    <string name="humidity">Humidity</string>
+    <string name="humidityUnits" translatable="false">%</string>
+    <string name="humidityValue" translatable="false">10</string>
     <string name="empty_list" translatable="false">empty list</string>
     <string name="are_you_sure">Are you really want choose </string>
     <string name="confirm">Confirm</string>
+    <string name="error">Error</string>
+    <string name="error_text">An error occurred while connecting to the server</string>
     <string-array name="Cities">
         <item>Moscow</item>
         <item>Saint-Petersburg</item>

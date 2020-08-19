@@ -28,7 +28,7 @@ public class CitiesFragment extends Fragment implements IRVOnItemClick {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.recycler, container, false);
+        return inflater.inflate(R.layout.cities_list, container, false);
     }
 
     @Override
@@ -58,12 +58,7 @@ public class CitiesFragment extends Fragment implements IRVOnItemClick {
         String answer = getString(R.string.are_you_sure) + " " + itemText + "?";
         Snackbar.make(Objects.requireNonNull(getView()), answer,
                 BaseTransientBottomBar.LENGTH_LONG).
-                setAction(R.string.confirm, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getBus().post(new SomeEvent(CitiesFragment.itemText));
-            }
-        }).show();
-
+                setAction(R.string.confirm, v -> EventBus.getBus().
+                        post(new textEvent(CitiesFragment.itemText))).show();
     }
 }
