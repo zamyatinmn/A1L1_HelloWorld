@@ -3,6 +3,8 @@ package com.example.a1l1_helloworld;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,18 +12,23 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.squareup.otto.Subscribe;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IRVOnItemClick {
 
-    private Switch wtgSwitch;
-    private Button settingsBtn;
-    private Button wikiBtn;
+    private SwitchMaterial wtgSwitch;
+    private MaterialButton settingsBtn;
+    private MaterialButton wikiBtn;
     private TextView textView;
     private TextView city;
     private TextView windWord;
@@ -29,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView precipitation;
     private TextView precipitationValue;
     private TextView precipitationUnits;
-    private final String windValueDataKey = "windValueDataKey";
     private final String windVisKey = "windValueDataKey";
     private final String precVisKey = "windValueDataKey";
     final static String cityPositionKey = "cityPositionKey";
@@ -39,13 +45,17 @@ public class MainActivity extends AppCompatActivity {
     private final double COEFFICIENT = 1.5;
     String[] cities;
     private int windValue;
+    private RecyclerView daysView;
+    private RecyclerDataAdapter adapter;
+    private ArrayList<String> listData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             setContentView(R.layout.two_fragments);
-        }else {
+        } else {
             setContentView(R.layout.activity_main);
         }
         initViews();
@@ -57,6 +67,27 @@ public class MainActivity extends AppCompatActivity {
             setPrecipitationDataVisibility(savedInstanceState.getInt(precVisKey));
             city.setText(savedInstanceState.getString("from list"));
         }
+        setupDaysView();
+    }
+
+    private void setupDaysView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        listData = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.days)));
+        adapter = new RecyclerDataAdapter(listData, this);
+        daysView.setLayoutManager(layoutManager);
+        daysView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getBus().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        EventBus.getBus().unregister(this);
+        super.onStop();
     }
 
     /**
@@ -114,21 +145,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *  This method take states from all views to transfer to SettingsActivity
+     * This method take states from all views to transfer to SettingsActivity
+     *
      * @param intent Intent launching SettingsActivity
      */
     private void setParametersForSettingsAct(Intent intent) {
         for (int i = 0; i < cities.length; i++) {
-                if (city.getText().equals(cities[i])) {
-                    intent.putExtra(cityPositionKey, i);
-                }
+            if (city.getText().equals(cities[i])) {
+                intent.putExtra(cityPositionKey, i);
+            }
         }
-        if (windWord.getVisibility() == View.VISIBLE){
+        if (windWord.getVisibility() == View.VISIBLE) {
             intent.putExtra(windKey, true);
         } else {
             intent.putExtra(windKey, false);
         }
-        if (precipitation.getVisibility() == View.VISIBLE){
+        if (precipitation.getVisibility() == View.VISIBLE) {
             intent.putExtra(precipitationKey, true);
         } else {
             intent.putExtra(precipitationKey, false);
@@ -152,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
         precipitation = findViewById(R.id.precipitation);
         precipitationValue = findViewById(R.id.precipitationValue);
         precipitationUnits = findViewById(R.id.precipitationUnits);
+        daysView = findViewById(R.id.days_view);
     }
 
     @Override
@@ -159,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == MainActivity.requestCode && resultCode == RESULT_OK && data != null) {
-            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 String strData = data.getStringExtra(SettingsActivity.cityKey);
                 city.setText(strData);
             }
@@ -168,9 +201,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 setWindDataVisibility(View.VISIBLE);
             }
-            if (!data.getBooleanExtra(SettingsActivity.precipitationKey, false)){
+            if (!data.getBooleanExtra(SettingsActivity.precipitationKey, false)) {
                 setPrecipitationDataVisibility(View.INVISIBLE);
-            } else{
+            } else {
                 setPrecipitationDataVisibility(View.VISIBLE);
             }
 
@@ -190,5 +223,14 @@ public class MainActivity extends AppCompatActivity {
         windWord.setVisibility(visibility);
     }
 
+    @Subscribe
+    @SuppressWarnings("unused")
+    public void onSomeEvent(SomeEvent event) {
+        city.setText(event.text);
+    }
 
+    @Override
+    public void onItemClicked(String itemText) {
+        Toast.makeText(this, itemText, Toast.LENGTH_SHORT).show();
+    }
 }

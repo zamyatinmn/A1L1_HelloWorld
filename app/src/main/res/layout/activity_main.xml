@@ -9,127 +9,123 @@
 
     <TextView
         android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:text="@string/city"
-        android:textSize="40sp"
+        android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.181" />
+        app:layout_constraintVertical_bias="0.156" />
 
     <TextView
         android:id="@+id/temperatureUnits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="28dp"
+        style="@style/wrap"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/temperatureUnits"
-        android:textSize="60sp"
+        android:textSize="@dimen/temp_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/windWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="72dp"
         android:text="@string/windSpeed"
-        android:textSize="30sp"
+        android:textSize="@dimen/wind_size"
         app:layout_constraintEnd_toStartOf="@+id/windUnits"
         app:layout_constraintTop_toTopOf="@+id/windUnits" />
 
     <TextView
         android:id="@+id/windUnits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        style="@style/wrap"
+        android:layout_marginTop="8dp"
         android:text="@string/windUnits"
-        android:textSize="40sp"
+        android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="@+id/temperatureUnits"
         app:layout_constraintTop_toBottomOf="@+id/temperatureUnits" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/wtgSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:layout_marginTop="4dp"
         android:text="@string/wtg"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/windUnits"
-        app:layout_constraintTop_toBottomOf="@+id/windUnits" />
+        app:layout_constraintTop_toBottomOf="@+id/windUnits"/>
 
     <TextView
         android:id="@+id/temperatureValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:text="@integer/temperatureValue"
-        android:textSize="60sp"
+        android:textSize="@dimen/temp_size"
         app:layout_constraintBottom_toBottomOf="@+id/temperatureUnits"
         app:layout_constraintEnd_toStartOf="@+id/temperatureUnits" />
 
     <TextView
         android:id="@+id/windValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:layout_marginEnd="12dp"
         android:text="@integer/windValue"
-        android:textSize="40sp"
+        android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toStartOf="@+id/windUnits"
         app:layout_constraintTop_toTopOf="@+id/windUnits" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/settingsBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:layout_marginBottom="16dp"
         android:background="@color/blue"
         android:text="@string/settingsText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/city" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/wikiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="16dp"
         android:background="@color/blue"
         android:text="@string/wikipedia"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/settingsBtn" />
+        app:layout_constraintStart_toEndOf="@+id/settingsBtn"/>
 
     <TextView
         android:id="@+id/precipitation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        style="@style/wrap"
+        android:layout_marginTop="36dp"
         android:text="@string/precipitation"
-        android:textSize="30sp"
+        android:textSize="@dimen/wind_size"
         app:layout_constraintEnd_toEndOf="@+id/windWord"
         app:layout_constraintTop_toBottomOf="@+id/windWord" />
 
     <TextView
         android:id="@+id/precipitationValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:text="@string/precipitationValue"
-        android:textSize="40sp"
+        android:textSize="@dimen/text_size"
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toStartOf="@+id/precipitationUnits"
         app:layout_constraintTop_toTopOf="@+id/precipitation" />
 
     <TextView
         android:id="@+id/precipitationUnits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:text="@string/precipitationUnits"
-        android:textSize="40sp"
+        android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="@+id/wtgSwitch"
         app:layout_constraintTop_toTopOf="@+id/precipitationValue" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/days_view"
+        style="@style/wrap"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@+id/city"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

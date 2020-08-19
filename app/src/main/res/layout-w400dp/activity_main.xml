@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_wtg_land"
+    android:background="@drawable/background_wtg"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,16 +17,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <TextView
         android:id="@+id/temperatureUnits"
         style="@style/wrap"
+        android:layout_marginTop="96dp"
         android:layout_marginEnd="28dp"
         android:text="@string/temperatureUnits"
         android:textSize="@dimen/temp_size"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/city" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/windWord"
@@ -41,7 +42,7 @@
     <TextView
         android:id="@+id/windUnits"
         style="@style/wrap"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="44dp"
         android:text="@string/windUnits"
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="@+id/temperatureUnits"
@@ -80,7 +81,7 @@
         android:background="@color/blue"
         android:text="@string/settingsText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/city" />
+        app:layout_constraintStart_toStartOf="@+id/city"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/wikiBtn"
@@ -90,12 +91,12 @@
         android:background="@color/blue"
         android:text="@string/wikipedia"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/settingsBtn"/>
+        app:layout_constraintStart_toEndOf="@+id/settingsBtn" />
 
     <TextView
         android:id="@+id/precipitation"
         style="@style/wrap"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="76dp"
         android:text="@string/precipitation"
         android:textSize="@dimen/wind_size"
         app:layout_constraintEnd_toEndOf="@+id/windWord"
