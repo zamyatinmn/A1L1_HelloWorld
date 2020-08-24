@@ -6,12 +6,14 @@
     <string name="windUnits">м/с</string>
     <string name="wtg">ВЭУ</string>
     <string name="checkBox_wind">Отображать скорость ветра</string>
-    <string name="checkBox_pressure">Отображать вероятность осадков</string>
+    <string name="checkBox_humidity">Отображать влажность</string>
     <string name="settingsText">Настройки</string>
     <string name="dark_theme">Темная тема</string>
-    <string name="precipitation">Осадки</string>
+    <string name="humidity">Влажность</string>
     <string name="are_you_sure">Вы действительно хотите выбрать </string>
     <string name="confirm">Подтвердить</string>
+    <string name="error">Ошибка</string>
+    <string name="error_text">Возникла ошибка при подключении к серверу</string>
     <string-array name="Cities">
         <item>Москва</item>
         <item>Санкт-петербург</item>

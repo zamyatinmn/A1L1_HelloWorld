@@ -18,11 +18,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <CheckBox
-        android:id="@+id/checkBox_precipitation"
+        android:id="@+id/checkBox_humidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/checkBox_pressure"
+        android:text="@string/checkBox_humidity"
         app:layout_constraintStart_toStartOf="@+id/checkBox_wind"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_wind" />
 
@@ -44,6 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/dark_theme"
-        app:layout_constraintStart_toStartOf="@+id/checkBox_precipitation"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_precipitation" />
+        app:layout_constraintStart_toStartOf="@+id/checkBox_humidity"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_humidity" />
 </androidx.constraintlayout.widget.ConstraintLayout>
